@@ -4,18 +4,18 @@
             <img src="../../assets/img/play.svg" alt="play" class="podcast__playbutton">
         </a>
         <div class="podcast__details">
-            <div class="podcast__sub">2 days ago</div>
+            <div class="podcast__sub"><time :datetime="podcast.created_at">{{ podcast.created_at_humen}}</time></div>
             <h1 class="podcast__header">
-                <a href="#">Lorem ipsum dolor, sit amet consectetur adipisicing elit</a>
+                <a href="#">{{ podcast.title }}</a>
             </h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, aut saepe? Odit facilis dolorem reiciendis nobis sit tempora? Voluptate adipisci tempore est ea possimus, reprehenderit fugiat aliquid odio consectetur labore!</p>
+            <p>{{ podcast.description }}</p>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    
+    props: ['podcast']
 }
 </script>
 

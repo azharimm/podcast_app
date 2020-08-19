@@ -1,20 +1,32 @@
 <template>
     <div>
         <transition-group name="fade">
-            <simple :key="1"></simple>
-            <simple :key="2"></simple>
-            <simple :key="3"></simple>
+            <simple :key="podcast.id" v-for="podcast in podcasts" :podcast="podcast"></simple>
         </transition-group>
         <a href="#" class="load-more">Load older podcasts</a>
     </div>
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex'
 import Simple from './podcasts/Simple'
 export default {
     components: {
         Simple
     },
+    mounted() {
+        this.getPodcasts();
+    },
+    computed: {
+        ...mapGetters({
+            'podcasts': 'podcasts/getPodcasts'
+        })
+    },
+    methods: {
+        ...mapActions({
+            'getPodcasts': 'podcasts/getPodcasts'
+        })
+    }
 }
 </script>
 
