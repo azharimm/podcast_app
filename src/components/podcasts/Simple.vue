@@ -1,7 +1,7 @@
 <template>
     <div class="podcast">
-        <a href="#" class="podcast__play">
-            <img src="../../assets/img/play.svg" alt="play" class="podcast__playbutton">
+        <a href="#" class="podcast__play" @click.prevent="switchPodcast(podcast.id)">
+            <img src="../../assets/img/play.svg" alt="play" class="podcast__playbutton" @click.prevent="switchPodcast(podcast.id)">
         </a>
         <div class="podcast__details">
             <div class="podcast__sub"><time :datetime="podcast.created_at">{{ podcast.created_at_humen}}</time></div>
@@ -14,8 +14,20 @@
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex'
 export default {
-    props: ['podcast']
+    props: ['podcast'],
+    methods: {
+        ...mapActions({
+            'getPodcast': 'podcasts/getPodcast',
+            'setPlaying': 'player/setPlaying'
+        }),
+        switchPodcast(id) {
+            this.getPodcast(id).then(response => {
+                this.setPlaying(response);
+            })
+        }
+    }
 }
 </script>
 

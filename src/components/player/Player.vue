@@ -1,15 +1,25 @@
 <template>
     <div class="player">
         <div class="player__header">
-            <span>Now Playing</span>: Podcast Title
+            <span>Now Playing</span>: {{podcast.title}}
         </div>
-        <audio controls autoplay ref="player" class="player__audio"></audio>
+        <audio controls autoplay ref="player" class="player__audio">
+            <source type="audio/mp3" v-if="podcast.files.mp3" :src="podcast.files.mp3" />
+            <source type="audio/ogg" v-if="podcast.files.ogg" :src="podcast.files.ogg" />
+            Your browser does not support audio element
+        </audio>
     </div>
 </template>
 
 <script>
+
 export default {
-    
+    props: ['podcast'],
+    watch: {
+        podcast() {
+            this.$refs.player.load();
+        }
+    }
 }
 </script>
 
