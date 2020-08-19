@@ -39,11 +39,11 @@ export default {
 	}
 
 	a {
-		color: rgba(#387bc9, .9);
+		color: rgba($blue, .9);
 		transition: color 100ms ease-in;
 
 		&:hover {
-			color: #388bc9;
+			color: $blue;
 		}
 	}
 
