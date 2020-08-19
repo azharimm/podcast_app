@@ -5,7 +5,9 @@
         </a>
         <div class="podcast__details">
             <div class="podcast__sub">2 days ago</div>
-            <h1 class="podcast__header">Lorem ipsum dolor, sit amet consectetur adipisicing elit</h1>
+            <h1 class="podcast__header">
+                <a href="#">Lorem ipsum dolor, sit amet consectetur adipisicing elit</a>
+            </h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, aut saepe? Odit facilis dolorem reiciendis nobis sit tempora? Voluptate adipisci tempore est ea possimus, reprehenderit fugiat aliquid odio consectetur labore!</p>
         </div>
     </div>
@@ -36,6 +38,14 @@ export default {
 
         &__sub {
             font-weight: 500;
+        }
+
+        &__header {
+            font-size: 1.6em;
+
+            a {
+                text-decoration: none;
+            }
         }
 
         &__play {
